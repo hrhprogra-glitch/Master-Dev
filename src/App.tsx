@@ -1,38 +1,59 @@
 import { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { Loader } from './components/Loader';
 import { Navbar } from './components/Navbar';
 import { Hero } from './sections/Hero';
+import { About } from './sections/About';
+import { Stack } from './sections/Stack';
 import { Expertise } from './sections/Expertise';
+import { Projects } from './sections/Projects';
+import { Contact } from './sections/Contact';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  
+  // Barra de progreso sutil estilo Rockstar
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   useEffect(() => {
-    // Simulamos el tiempo de carga de los assets (3.5s para que luzca el loader)
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3500);
-
+    const timer = setTimeout(() => setLoading(false), 3500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="bg-brand-black min-h-screen">
+    // Mantenemos el fondo negro sólido aquí como base para todo el sitio
+    <div className="bg-[#050505] min-h-screen">
       <AnimatePresence mode="wait">
         {loading ? (
-          // El Loader se muestra solo mientras loading es true
           <Loader key="loader" />
         ) : (
-          // El contenido principal aparece cuando loading es false
-          <div key="content">
+          <motion.div key="content">
+            {/* Barra de progreso superior dorada */}
+            <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-brand-gold z-[60] origin-left" style={{ scaleX }} />
+            
             <Navbar />
-            <main>
+            
+            <main className="relative">
+              {/* El Hero ahora contiene los InteractiveCircuits con posición fixed */}
               <Hero />
-              <Expertise />
-              {/* Aquí irán las siguientes secciones */}
+              
+              {/* IMPORTANTE: Cambiamos bg-black/opacity o transparente 
+                para que el fondo fijo del Hero sea visible en el scroll.
+              */}
+              <div className="relative z-10 bg-transparent shadow-[0_-50px_100px_rgba(0,0,0,0.9)]">
+                <About />
+                <Stack />
+                <Expertise />
+                <Projects />
+                <Contact />
+              </div>
             </main>
-          </div>
+
+            <footer className="relative z-10 py-20 bg-black text-center border-t border-brand-gold/5">
+               <p className="text-brand-gold/20 text-[10px] tracking-[1em] uppercase italic">Master Dev _ Next Gen Architecture</p>
+            </footer>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

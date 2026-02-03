@@ -2,23 +2,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
 
 @theme {
-  /* Negro profundo para fondos */
+  /* Negro profundo para fondos - Ajustado para mayor profundidad */
   --color-brand-black: #050505; 
+  --color-brand-black-soft: #0a0a0a;
+
   /* Blanco puro para textos principales */
   --color-brand-white: #ffffff;
-  /* Dorado elegante (Gold Dust) */
+  
+  /* Paleta Dorada Rockstar */
   --color-brand-gold: #d4af37;
-  /* Dorado claro para efectos de brillo */
   --color-brand-gold-light: #f1d592;
+  --color-brand-gold-dark: #9a7b2c;
   
   /* Tipografía Tecnológica Formal */
   --font-tech: 'Space Grotesk', sans-serif;
+
+  /* Efectos de Brillo (Glow) */
+  --shadow-gold-glow: 0 0 20px rgba(212, 175, 55, 0.2);
+  --shadow-gold-strong: 0 0 40px rgba(212, 175, 55, 0.4);
 }
 
+/* Base Styles */
 body {
   background-color: var(--color-brand-black);
   color: var(--color-brand-white);
   font-family: var(--font-tech);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Animación para el Carrusel Infinito Profesional */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-infinite-scroll {
+  display: flex;
+  width: max-content;
+  animation: infinite-scroll 40s linear infinite;
+  /* Se eliminó la propiedad pause-on-hover para mantener la fluidez */
+}
+
+/* Utilidades de Diseño Avanzado */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(to right, var(--color-brand-gold), var(--color-brand-gold-light), var(--color-brand-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+}
+
+/* Personalización del Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-gold-dark);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-gold);
 }
