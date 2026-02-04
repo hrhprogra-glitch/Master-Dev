@@ -3,13 +3,15 @@ import { useRef } from 'react';
 import { InteractiveCircuits } from '../components/InteractiveCircuits';
 import { 
   SiGithub, SiWhatsapp, SiGmail, SiLinkedin, 
-  SiInstagram, SiX, SiTiktok, SiFacebook, SiYoutube 
+  SiInstagram, SiX, SiTiktok, SiFacebook, SiYoutube,
+  SiFiverr // <--- IMPORTAMOS FIVERR
 } from 'react-icons/si';
 
 // --- DATOS ---
 const professionalLinks = [
   { name: 'GitHub', icon: <SiGithub />, url: 'https://github.com/harrymusic14', color: 'hover:text-white' },
   { name: 'LinkedIn', icon: <SiLinkedin />, url: 'https://linkedin.com/in/tu-usuario', color: 'hover:text-[#0A66C2]' },
+  { name: 'Fiverr', icon: <SiFiverr />, url: 'https://www.fiverr.com/tu-usuario', color: 'hover:text-[#1DBF73]' }, // <--- NUEVO
   { name: 'Email', icon: <SiGmail />, url: 'mailto:contacto@masterdev.com', color: 'hover:text-[#EA4335]' },
   { name: 'WhatsApp', icon: <SiWhatsapp />, url: 'https://wa.me/51982493208', color: 'hover:text-[#25D366]' },
 ];
@@ -49,25 +51,21 @@ export const Hero = () => {
 
       {/* --- BARRA LATERAL IZQUIERDA (PROFESIONAL) --- */}
       <motion.div 
-        style={{ opacity, y: sidebarY }} // Efecto Scroll
+        style={{ opacity, y: sidebarY }} 
         className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 z-20"
       >
-        {/* Wrapper de Entrada (Slide desde la izquierda) */}
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
           className="flex flex-col items-center gap-20"
         >
-            {/* Línea superior */}
             <div className="w-[1px] h-20 bg-gradient-to-b from-transparent to-brand-gold/50" />
             
-            {/* Texto Rotado */}
             <span className="text-brand-gold/40 text-[9px] tracking-[0.3em] font-bold uppercase -rotate-90 whitespace-nowrap py-2">
               Professional_Uplink
             </span>
 
-            {/* Iconos */}
             <div className="flex flex-col gap-6">
               {professionalLinks.map((link) => (
                 <motion.a
@@ -79,7 +77,6 @@ export const Hero = () => {
                   className={`text-xl text-brand-gold/60 transition-colors ${link.color} relative group`}
                 >
                   {link.icon}
-                  {/* Tooltip */}
                   <span className="absolute left-full top-1/2 -translate-y-1/2 ml-4 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-brand-gold text-[8px] px-2 py-1 border border-brand-gold/20 whitespace-nowrap backdrop-blur-sm">
                     {link.name}
                   </span>
@@ -87,7 +84,6 @@ export const Hero = () => {
               ))}
             </div>
             
-            {/* Línea inferior */}
             <div className="w-[1px] h-20 bg-gradient-to-t from-transparent to-brand-gold/50" />
         </motion.div>
       </motion.div>
@@ -95,25 +91,21 @@ export const Hero = () => {
 
       {/* --- BARRA LATERAL DERECHA (SOCIAL) --- */}
       <motion.div 
-        style={{ opacity, y: sidebarY }} // Efecto Scroll
+        style={{ opacity, y: sidebarY }}
         className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 z-20"
       >
-        {/* Wrapper de Entrada (Slide desde la derecha) */}
         <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
           className="flex flex-col items-center gap-20"
         >
-            {/* Línea superior */}
             <div className="w-[1px] h-20 bg-gradient-to-b from-transparent to-white/20" />
             
-            {/* Texto Rotado */}
             <span className="text-white/20 text-[9px] tracking-[0.3em] font-bold uppercase rotate-90 whitespace-nowrap py-2">
               Social_Feed_v2
             </span>
 
-            {/* Iconos */}
             <div className="flex flex-col gap-6">
               {socialLinks.map((link) => (
                 <motion.a
@@ -125,7 +117,6 @@ export const Hero = () => {
                   className={`text-xl text-white/30 transition-colors ${link.color} relative group`}
                 >
                   {link.icon}
-                   {/* Tooltip */}
                    <span className="absolute right-full top-1/2 -translate-y-1/2 mr-4 opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-white text-[8px] px-2 py-1 border border-white/20 whitespace-nowrap backdrop-blur-sm">
                     {link.name}
                   </span>
@@ -133,7 +124,6 @@ export const Hero = () => {
               ))}
             </div>
 
-            {/* Línea inferior */}
             <div className="w-[1px] h-20 bg-gradient-to-t from-transparent to-white/20" />
         </motion.div>
       </motion.div>

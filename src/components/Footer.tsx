@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { 
   SiGithub, SiWhatsapp, SiGmail, SiLinkedin, 
-  SiInstagram, SiX, SiTiktok, SiFacebook, SiYoutube 
+  SiInstagram, SiX, SiTiktok, SiFacebook, SiYoutube,
+  SiFiverr // <--- IMPORTAMOS FIVERR
 } from 'react-icons/si';
 
 // Definimos los grupos de redes
@@ -20,6 +21,12 @@ const socialGroups = [
         icon: <SiLinkedin />, 
         url: 'https://linkedin.com/in/tu-usuario', 
         color: 'hover:text-[#0A66C2]'
+      },
+      { 
+        name: 'Fiverr', // <--- NUEVO
+        icon: <SiFiverr />, 
+        url: 'https://www.fiverr.com/tu-usuario', 
+        color: 'hover:text-[#1DBF73]'
       },
       { 
         name: 'Email', 
