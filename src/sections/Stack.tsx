@@ -2,9 +2,9 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react';
 import { 
   SiReact, SiNodedotjs, SiTypescript, SiPostgresql, 
-  SiCss3, SiJavascript, SiPython, SiCplusplus, SiPhp, SiDocker, SiGit,
-  SiNextdotjs, SiTailwindcss, SiMongodb, SiRedis, SiAmazon, SiFirebase,
-  SiGo, SiFigma, SiJest, SiCypress, SiRedux
+  SiCss3, SiJavascript, SiPython, SiCplusplus,
+  SiNextdotjs, SiTailwindcss, SiMongodb, SiRedis, SiFirebase,
+  SiGo, SiFigma, SiRedux
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
