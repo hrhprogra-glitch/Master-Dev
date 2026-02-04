@@ -8,6 +8,7 @@ import { Stack } from './sections/Stack';
 import { Expertise } from './sections/Expertise';
 import { Projects } from './sections/Projects';
 import { Contact } from './sections/Contact';
+import { Footer } from './components/Footer'; // <--- IMPORTACIÓN DEL NUEVO FOOTER
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -50,9 +51,9 @@ function App() {
               </div>
             </main>
 
-            <footer className="relative z-10 py-20 bg-black text-center border-t border-brand-gold/5">
-               <p className="text-brand-gold/20 text-[10px] tracking-[1em] uppercase italic">Master Dev _ Next Gen Architecture</p>
-            </footer>
+            {/* NUEVO FOOTER INTEGRADO AQUÍ */}
+            <Footer />
+            
           </motion.div>
         )}
       </AnimatePresence>
