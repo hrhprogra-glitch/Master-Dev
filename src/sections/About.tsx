@@ -13,6 +13,7 @@ export const About = () => {
 
   return (
     <section 
+      id='about'
       ref={containerRef} 
       className="min-h-screen flex items-center justify-center bg-transparent relative overflow-hidden font-tech py-20"
     >

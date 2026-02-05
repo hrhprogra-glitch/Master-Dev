@@ -118,7 +118,7 @@ export const Expertise = () => {
   const headerBlur = useTransform(scrollYProgress, [0, 0.25], ["10px", "0px"]);
 
   return (
-    <section ref={containerRef} className="min-h-screen bg-transparent py-32 overflow-hidden font-tech relative">
+    <section  id="expertise" ref={containerRef} className="min-h-screen bg-transparent py-32 overflow-hidden font-tech relative">
       <motion.div style={{ opacity, scale }} className="container mx-auto px-6">
         
         {/* Cabecera Controlada por Scroll */}

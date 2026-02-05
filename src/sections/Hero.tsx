@@ -39,7 +39,7 @@ export const Hero = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
 
   return (
-    <section ref={containerRef} className="relative h-screen flex items-center justify-center bg-transparent overflow-hidden font-tech">
+    <section id="inicio" ref={containerRef} className="relative h-screen flex items-center justify-center bg-transparent overflow-hidden font-tech">
       
       {/* Fondo Fijo */}
       <div className="fixed inset-0 z-0 pointer-events-none">
