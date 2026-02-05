@@ -9,19 +9,19 @@ import {
 
 // --- DATOS ---
 const professionalLinks = [
-  { name: 'GitHub', icon: <SiGithub />, url: 'https://github.com/harrymusic14', color: 'hover:text-white' },
-  { name: 'LinkedIn', icon: <SiLinkedin />, url: 'https://linkedin.com/in/tu-usuario', color: 'hover:text-[#0A66C2]' },
-  { name: 'Fiverr', icon: <SiFiverr />, url: 'https://www.fiverr.com/tu-usuario', color: 'hover:text-[#1DBF73]' }, // <--- NUEVO
-  { name: 'Email', icon: <SiGmail />, url: 'mailto:contacto@masterdev.com', color: 'hover:text-[#EA4335]' },
-  { name: 'WhatsApp', icon: <SiWhatsapp />, url: 'https://wa.me/51982493208', color: 'hover:text-[#25D366]' },
+  { name: 'GitHub', icon: <SiGithub />, url: 'https://github.com/hrhprogra-glitch', color: 'hover:text-white' },
+  { name: 'LinkedIn', icon: <SiLinkedin />, url: 'https://www.linkedin.com/in/master-dev-51622a3ab/', color: 'hover:text-[#0A66C2]' },
+  { name: 'Fiverr', icon: <SiFiverr />, url: 'https://es.fiverr.com/sellers/hrh154/edit', color: 'hover:text-[#1DBF73]' },
+  { name: 'Email', icon: <SiGmail />, url: 'mailto:hrh.progra@gmail.com', color: 'hover:text-[#EA4335]' },
+  { name: 'WhatsApp', icon: <SiWhatsapp />, url: 'https://wa.me/51946000608', color: 'hover:text-[#25D366]' },
 ];
 
 const socialLinks = [
-  { name: 'YouTube', icon: <SiYoutube />, url: 'https://youtube.com/tu-canal', color: 'hover:text-[#FF0000]' },
-  { name: 'Instagram', icon: <SiInstagram />, url: 'https://instagram.com/tu-usuario', color: 'hover:text-[#E4405F]' },
-  { name: 'TikTok', icon: <SiTiktok />, url: 'https://tiktok.com/@tu-usuario', color: 'hover:text-[#ff0050]' },
-  { name: 'Facebook', icon: <SiFacebook />, url: 'https://facebook.com/tu-usuario', color: 'hover:text-[#1877F2]' },
-  { name: 'X', icon: <SiX />, url: 'https://x.com/tu-usuario', color: 'hover:text-white' },
+  { name: 'YouTube', icon: <SiYoutube />, url: 'https://www.youtube.com/channel/UCvVGziz5MWhAa0HAjEPmfZw', color: 'hover:text-[#FF0000]' },
+  { name: 'Instagram', icon: <SiInstagram />, url: 'https://www.instagram.com/master.dev2/', color: 'hover:text-[#E4405F]' },
+  { name: 'TikTok', icon: <SiTiktok />, url: 'https://www.tiktok.com/@hrhprogra', color: 'hover:text-[#ff0050]' },
+  { name: 'Facebook', icon: <SiFacebook />, url: 'https://www.facebook.com/profile.php?id=61584367826080', color: 'hover:text-[#1877F2]' },
+  { name: 'X', icon: <SiX />, url: 'https://x.com/HRHPROGRA', color: 'hover:text-white' },
 ];
 
 export const Hero = () => {
