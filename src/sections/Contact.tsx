@@ -13,14 +13,27 @@ const TravelingLaser = ({ duration = 3, color = "#d4af37" }) => {
     <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-sm">
       <motion.div
         animate={{ left: ["-100%", "100%"] }}
-        transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
-        className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-100"
+        transition={{ duration, repeat: Infinity, ease: "linear" }}
+        className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent"
         style={glowStyle}
       />
-      <motion.div 
-         animate={{ left: ["0%", "100%"] }}
-         transition={{ duration: duration, repeat: Infinity, ease: "linear" }}
-         className="absolute top-[-3px] left-0 w-2 h-2 rounded-full bg-white shadow-[0_0_20px_#fff]"
+      <motion.div
+        animate={{ top: ["-100%", "100%"] }}
+        transition={{ duration, repeat: Infinity, ease: "linear", delay: duration / 4 }}
+        className="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-transparent via-brand-gold to-transparent"
+        style={glowStyle}
+      />
+      <motion.div
+        animate={{ right: ["-100%", "100%"] }}
+        transition={{ duration, repeat: Infinity, ease: "linear", delay: duration / 2 }}
+        className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-transparent via-brand-gold to-transparent"
+        style={glowStyle}
+      />
+      <motion.div
+        animate={{ bottom: ["-100%", "100%"] }}
+        transition={{ duration, repeat: Infinity, ease: "linear", delay: (duration / 4) * 3 }}
+        className="absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-t from-transparent via-brand-gold to-transparent"
+        style={glowStyle}
       />
     </div>
   );
@@ -55,26 +68,19 @@ export const Contact = () => {
   const xRight = useTransform(scrollYProgress, [0, 0.7], [300, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const yTitle = useTransform(scrollYProgress, [0, 0.7], [-100, 0]);
-
   const glowScale = useTransform(scrollYProgress, [0.7, 0.8], [0, 1]);
-  const glowOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1]);
   const auraAppearance = useTransform(scrollYProgress, [0.75, 0.9], [0, 1]);
-  const laserOpacity = useTransform(scrollYProgress, [0.79, 0.8], [0, 1]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = new FormData(form);
-
     setStatus("SENDING");
 
     try {
       const response = await fetch("https://formspree.io/f/maqdwbea", {
         method: "POST",
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
 
       if (response.ok) {
@@ -92,11 +98,7 @@ export const Contact = () => {
   };
 
   return (
-    <section 
-      ref={containerRef} 
-      id="contacto" 
-      className="py-32 bg-transparent font-tech text-white overflow-hidden min-h-screen flex items-center justify-center relative"
-    >
+    <section ref={containerRef} id="contacto" className="py-32 bg-transparent font-tech text-white overflow-hidden min-h-screen flex items-center justify-center relative">
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#d4af37_1px,transparent_1px),linear-gradient(to_bottom,#d4af37_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       <motion.div style={{ opacity: auraAppearance }} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -105,24 +107,22 @@ export const Contact = () => {
       </motion.div>
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
-        <motion.div style={{ y: yTitle, opacity }} className="text-center mb-16 overflow-hidden">
-          <h2 className="text-brand-gold text-5xl md:text-7xl font-black uppercase italic tracking-tighter">
-            INICIAR PROYECTO
-          </h2>
+        <motion.div style={{ y: yTitle, opacity }} className="text-center mb-16">
+          <h2 className="text-brand-gold text-5xl md:text-7xl font-black uppercase italic tracking-tighter">INICIAR PROYECTO</h2>
           <p className="text-brand-gold/50 text-xs tracking-[0.5em] uppercase mt-2">Briefing_System_v1.0</p>
         </motion.div>
 
         <div className="relative p-8">
-          <motion.div style={{ scaleX: glowScale, opacity: glowOpacity }} className="absolute top-0 left-0 right-0 h-[2px] bg-brand-gold/30 origin-center" />
-          <motion.div style={{ scaleY: glowScale, opacity: glowOpacity }} className="absolute top-0 bottom-0 left-0 w-[2px] bg-brand-gold/30 origin-center" />
-          <motion.div style={{ scaleY: glowScale, opacity: glowOpacity }} className="absolute top-0 bottom-0 right-0 w-[2px] bg-brand-gold/30 origin-center" />
-          <motion.div style={{ scaleX: glowScale, opacity: glowOpacity }} className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-gold/30 origin-center" />
+          <motion.div style={{ scaleX: glowScale, opacity: 1 }} className="absolute top-0 left-0 right-0 h-[2px] bg-brand-gold/30 origin-center" />
+          <motion.div style={{ scaleY: glowScale, opacity: 1 }} className="absolute top-0 bottom-0 left-0 w-[2px] bg-brand-gold/30 origin-center" />
+          <motion.div style={{ scaleY: glowScale, opacity: 1 }} className="absolute top-0 bottom-0 right-0 w-[2px] bg-brand-gold/30 origin-center" />
+          <motion.div style={{ scaleX: glowScale, opacity: 1 }} className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-gold/30 origin-center" />
 
-          <motion.div style={{ opacity: laserOpacity }} className="absolute inset-0 z-20 pointer-events-none">
+          <div className="absolute inset-0 z-20 pointer-events-none">
              <TravelingLaser duration={3} />
-          </motion.div>
+          </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+          <form onSubmit={handleSubmit} className="space-y-6 relative z-30">
             <motion.div style={{ x: xLeft, opacity }} className="space-y-2 group">
               <label className="text-[10px] text-brand-gold tracking-widest uppercase font-bold">Nombre Completo o Empresa *</label>
               <input required name="nombre" type="text" placeholder="Identity_Verification..." className="w-full bg-black/60 border border-brand-gold/10 p-4 text-xs font-bold tracking-widest focus:border-brand-gold outline-none text-brand-gold transition-all duration-300 backdrop-blur-md" />
@@ -155,8 +155,8 @@ export const Contact = () => {
               <textarea required name="message" rows={4} placeholder="System_Specifications..." className="w-full bg-black/60 border border-brand-gold/10 p-4 text-xs font-bold tracking-widest focus:border-brand-gold outline-none text-brand-gold resize-none transition-all duration-300 backdrop-blur-md"></textarea>
             </motion.div>
 
-            {/* BOTÓN CON ANIMACIÓN DORADO/BLANCO/NEGRO */}
-            <motion.div style={{ scale: glowScale }} className="relative mt-12">
+            {/* BOTÓN CON ANIMACIÓN DE LLENADO DORADO */}
+            <motion.div style={{ scale: glowScale }} className="relative mt-12 group/btn">
               <AnimatePresence mode="wait">
                 <motion.button
                   key={status}
@@ -166,31 +166,37 @@ export const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   className={`w-full py-6 font-black uppercase tracking-[0.5em] text-xs transition-all duration-500 relative overflow-hidden z-30 flex items-center justify-center gap-4 border
-                    ${status === "SUCCESS" ? "bg-brand-gold text-black border-brand-gold shadow-[...rgba(212,175,55,0.6)]" : 
-                      status === "ERROR" ? "bg-brand-gold/20 text-brand-gold border-brand-gold" : 
-                      "bg-black border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-black shadow-[0_0_30px_rgba(212,175,55,0.2)]"}
+                    ${status === "SUCCESS" ? "bg-brand-gold text-black border-brand-gold shadow-[0_0_50px_rgba(212,175,55,0.6)]" : 
+                      status === "ERROR" ? "bg-red-600/20 text-red-500 border-red-500" : 
+                      "bg-black border-brand-gold text-brand-gold shadow-[0_0_30px_rgba(212,175,55,0.2)]"}
                   `}
                 >
                   {status === "IDLE" && (
-                    <span className="relative z-10">Ejecutar_Envío</span>
+                    <>
+                      <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-black">Ejecutar_Envío</span>
+                      <div className="absolute inset-0 bg-brand-gold translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out z-0" />
+                    </>
                   )}
                   {status === "SENDING" && (
-                    <div className="flex items-center gap-3 text-brand-gold">
+                    <div className="flex items-center gap-3 relative z-10">
                       <FaSpinner className="animate-spin text-lg" />
                       <span className="animate-pulse">Transmitiendo_Datos...</span>
                     </div>
                   )}
                   {status === "SUCCESS" && (
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 relative z-10 text-black">
                       <FaCheckCircle className="text-xl" />
                       <span>Protocolo_Completado</span>
                     </div>
                   )}
-                  {status === "ERROR" && (
-                    <span className="text-brand-gold uppercase">Fallo_En_La_Red</span>
-                  )}
+                  {status === "ERROR" && <span className="relative z-10">Fallo_En_La_Red</span>}
                 </motion.button>
               </AnimatePresence>
+
+              {/* LÁSER RÁPIDO DEL BOTÓN */}
+              <div className="absolute inset-0 z-40 pointer-events-none">
+                  <TravelingLaser duration={1.5} color="#ffffff" />
+              </div>
             </motion.div>
           </form>
         </div>
